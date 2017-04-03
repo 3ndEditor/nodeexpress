@@ -25,7 +25,7 @@ var opts = {
 switch (app.get('env')) {
     case 'development':
         // mongoose.connect(credentials.mongo.development.connectionString, opts);
-        mongoose.connect('mongodb://admin:rhzkftbadndb1@ds147900.mlab.com:47900/heroku_6mvrdgj5', opts);
+        mongoose.connect(process.env.MONGODB_URI, opts);
         console.log("디비연결확인");
         break;
     case 'production':
@@ -120,6 +120,12 @@ app
         if (cluster.isWorker) console.log('Worker %d received request', cluster.worker.id);
         next();
     })
+    // .use(require('cookie-parser')(credentials.cookieSecret))
+    // .use(require('express-session')({
+    //     resave: false,
+    //     saveUninitialized: false,
+    //     secret: credentials.cookieSecret
+    // }));
 
 // 라우터 연결
 require('./router/routes.js')(app);
