@@ -20,21 +20,21 @@ var opts = {
     }
 };
 
+mongoose.connect(process.env.MONGODB_URI,opts);
 
-
-switch (app.get('env')) {
-    case 'development':
-        // mongoose.connect(credentials.mongo.development.connectionString, opts);
-        mongoose.connect(process.env.MONGODB_URI, opts);
-        console.log("디비연결확인");
-        break;
-    case 'production':
-        // mongoose.connect(credentials.mongo.production.connectionString, opts);
-        mongoose.connect(process.env.MONGODB_URI, opts);
-        break;
-    default:
-        throw new Error('Unknown execution environment : ' + app.get('env'));
-}
+// switch (app.get('env')) {
+//     case 'development':
+//         // mongoose.connect(credentials.mongo.development.connectionString, opts);
+//         mongoose.connect(process.env.MONGODB_URI,opts);
+//         console.log("디비연결확인");
+//         break;
+//     case 'production':
+//         // mongoose.connect(credentials.mongo.production.connectionString, opts);
+//         mongoose.connect(process.env.MONGODB_URI, opts);
+//         break;
+//     default:
+//         throw new Error('Unknown execution environment : ' + app.get('env'));
+// }
 
 // First.find(function (err, data) {
 //     if (err) return console.error(err);
