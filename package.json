@@ -1,0 +1,30 @@
+{
+  "name": "nodeexpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3ndEditor/nodeexpress.git"
+  },
+  "author": "Youngtae",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3ndEditor/nodeexpress/issues"
+  },
+  "homepage": "https://github.com/3ndEditor/nodeexpress#readme",
+  "dependencies": {
+    "connect": "^3.6.0",
+    "connect-rest": "^2.11.8",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "mongoose": "^4.9.2",
+    "restler": "^3.4.0",
+    "session-mongoose": "^0.5.2"
+  }
+}
