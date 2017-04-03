@@ -25,7 +25,7 @@ var opts = {
 switch (app.get('env')) {
     case 'development':
         // mongoose.connect(credentials.mongo.development.connectionString, opts);
-        mongoose.connect(process.env.MONGODB_URI, opts);
+        mongoose.connect('mongodb://admin:rhzkftbadndb1@ds147900.mlab.com:47900/heroku_6mvrdgj5', opts);
         console.log("디비연결확인");
         break;
     case 'production':
