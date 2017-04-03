@@ -20,7 +20,7 @@ var opts = {
     }
 };
 
-mongoose.connect('mongodb://admin:rhzkftbadndb1@ds147900.mlab.com:47900/heroku_6mvrdgj5',opts);
+mongoose.connect(process.env.MONGODB_URI,opts);
 
 // switch (app.get('env')) {
 //     case 'development':
