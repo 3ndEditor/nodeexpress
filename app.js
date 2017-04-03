@@ -1,6 +1,6 @@
 var express = require('express'),
     connect = require('connect'),
-    credentials = require('./credentials.js'),
+    // credentials = require('./credentials.js'),
     First = require('./models/models.js')
     
 
@@ -20,13 +20,17 @@ var opts = {
     }
 };
 
+
+
 switch (app.get('env')) {
     case 'development':
-        mongoose.connect(credentials.mongo.development.connectionString, opts);
+        // mongoose.connect(credentials.mongo.development.connectionString, opts);
+        mongoose.connect(process.env.MONGODB_URI, opts);
         console.log("디비연결확인");
         break;
     case 'production':
-        mongoose.connect(credentials.mongo.production.connectionString, opts);
+        // mongoose.connect(credentials.mongo.production.connectionString, opts);
+        mongoose.connect(process.env.MONGODB_URI, opts);
         break;
     default:
         throw new Error('Unknown execution environment : ' + app.get('env'));
@@ -116,12 +120,12 @@ app
         if (cluster.isWorker) console.log('Worker %d received request', cluster.worker.id);
         next();
     })
-    .use(require('cookie-parser')(credentials.cookieSecret))
-    .use(require('express-session')({
-        resave: false,
-        saveUninitialized: false,
-        secret: credentials.cookieSecret
-    }));
+    // .use(require('cookie-parser')(credentials.cookieSecret))
+    // .use(require('express-session')({
+    //     resave: false,
+    //     saveUninitialized: false,
+    //     secret: credentials.cookieSecret
+    // }));
 
 // 라우터 연결
 require('./router/routes.js')(app);

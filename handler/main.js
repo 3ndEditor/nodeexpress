@@ -1,5 +1,5 @@
 var First = require('../models/models.js');
-
+var Books = require('../models/books.js');
 
 exports.home = (req, res) => {
     res.type('application/json');
@@ -35,4 +35,10 @@ exports.first = function (req, res) {
         }
         res.send(context);
     })
+}
+exports.books = function (req, res) {
+    Books.find(function (err, books) {
+        if (err) return res.status(500).send({ error: 'database failure' });
+        res.json(books);
+    });
 }

@@ -5,4 +5,5 @@ module.exports = function(app){
     app.get('/fail',main.fail);
     app.get('/epic-fail',main.epic_fail);
     app.get('/first',main.first);
+    app.get('/books',main.books)
 }
