@@ -1,7 +1,7 @@
 var express = require('express'),
-    connect = require('connect'),
+    connect = require('connect')
     // credentials = require('./credentials.js'),
-    First = require('./models/models.js')
+    // First = require('./models/models.js')
     
 
 // 익스프레스 사용
@@ -36,21 +36,21 @@ switch (app.get('env')) {
         throw new Error('Unknown execution environment : ' + app.get('env'));
 }
 
-First.find(function (err, data) {
-    if (err) return console.error(err);
-    console.log("머가 어떻게");
-    if (data.length) return;
+// First.find(function (err, data) {
+//     if (err) return console.error(err);
+//     console.log("머가 어떻게");
+//     if (data.length) return;
 
-    new First({
-        name: "hello",
-        category: "world!"
-    }).save();
+//     new First({
+//         name: "hello",
+//         category: "world!"
+//     }).save();
 
-    new First({
-        name: "hi",
-        category: "me"
-    }).save();
-})
+//     new First({
+//         name: "hi",
+//         category: "me"
+//     }).save();
+// })
 
 //세션 디비 연결인데 잘 모르겟음 
 // var MongoSessionStore = require('session-mongoose')(require('connect'));
