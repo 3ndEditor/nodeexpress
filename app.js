@@ -120,12 +120,6 @@ app
         if (cluster.isWorker) console.log('Worker %d received request', cluster.worker.id);
         next();
     })
-    // .use(require('cookie-parser')(credentials.cookieSecret))
-    // .use(require('express-session')({
-    //     resave: false,
-    //     saveUninitialized: false,
-    //     secret: credentials.cookieSecret
-    // }));
 
 // 라우터 연결
 require('./router/routes.js')(app);

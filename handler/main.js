@@ -6,10 +6,10 @@ exports.home = (req, res) => {
     // res.set('Access-Control-Allow-Credentials','false');
     res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
     // res.cookie('monster', 'nom nom');
-    res.cookie('signed_monster', 'nom nom', { signed: true });
+    // res.cookie('signed_monster', 'nom nom', { signed: true });
     // console.log(req.cookies)
-    console.log(req.signedCookies.signed_monster);
-    req.session.userName = "Anonymous";
+    // console.log(req.signedCookies.signed_monster);
+    // req.session.userName = "Anonymous";
 
     res.json({ hi: "hellooodd" });
 }
