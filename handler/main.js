@@ -9,7 +9,7 @@ exports.home = (req, res) => {
     // res.cookie('signed_monster', 'nom nom', { signed: true });
     // console.log(req.cookies)
     // console.log(req.signedCookies.signed_monster);
-    req.session.userName = "Anonymous";
+    // req.session.userName = "Anonymous";
 
     res.json({ hi: "hellooodd" });
 }
@@ -24,18 +24,18 @@ exports.epic_fail = function (req, res) {
     })
 }
 
-exports.first = function (req, res) {
-    First.find({ name: 'hello' }, function (err, firsts) {
-        var context = {
-            first: firsts.map(function (first) {
-                return {
-                    name: first.name
-                }
-            })
-        }
-        res.send(context);
-    })
-}
+// exports.first = function (req, res) {
+//     First.find({ name: 'hello' }, function (err, firsts) {
+//         var context = {
+//             first: firsts.map(function (first) {
+//                 return {
+//                     name: first.name
+//                 }
+//             })
+//         }
+//         res.send(context);
+//     })
+// }
 exports.books = function (req, res) {
     Books.find(function (err, books) {
         if (err) return res.status(500).send({ error: 'database failure' });
