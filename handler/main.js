@@ -11,7 +11,7 @@ exports.home = (req, res) => {
     // console.log(req.signedCookies.signed_monster);
     // req.session.userName = "Anonymous";
 
-    res.json({ hi: "hellooodd" });
+    res.json({ hi: "gtest" });
 }
 
 exports.fail = function (req, res) {
