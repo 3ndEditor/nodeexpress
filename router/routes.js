@@ -1,4 +1,4 @@
-var main = require('../handler/main.js');
+var main = require('../handler/userdata');
 
 module.exports = function(app){
     app.get('/userInfo/:userId',main.userInfo);
