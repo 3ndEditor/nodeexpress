@@ -1,6 +1,6 @@
 var express = require('express'),
-    connect = require('connect'),
-    credentials = require('./credentials');
+    connect = require('connect');
+    
 // 익스프레스 사용
 var app = express();
 
@@ -18,6 +18,7 @@ var opts = {
 switch (app.get('env')) {
     case 'development':
         console.log("development db connect");
+        credentials = require('./credentials');
         mongoose.connect(credentials.mongo.development.connectionString, opts);
 
         break;
