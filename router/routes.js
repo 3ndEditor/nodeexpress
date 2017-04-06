@@ -1,6 +1,5 @@
-var main = require('../handler/userdata');
+var userdata = require('../handler/userdata');
 
-module.exports = function(app){
-    app.get('/userInfo/:userId',main.userInfo);
-    app.get('/books',main.books);
+module.exports = function (app) {
+    app.get('/userInfo/:userId', userdata.userInfo);
 }

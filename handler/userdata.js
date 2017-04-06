@@ -23,17 +23,25 @@ exports.userInfo = (req, res) => {
     // })
 
     UserDataSchema.findOne({ userId: req.params.userId }).exec((err, userData) => {
+        //에러 검사
         if (err) {
             return console.error(err);
         }
-        if (userData.length) {
-            return userData;
+        if (userData) {
+            // db안에 데이터가 있다면 데이터를 보냄
+            res.json(userData);
         } else {
-            return -1;
+            // db안에 데이터가 없다면 userId만 들어간 데이터를 생성함. 
+            new UserDataSchema({
+                userId: req.params.userId
+            })
+            .save()
+            .then(() => {
+                res.json(-1);
+            })
+            .catch((err)=>{
+                res.json(err)
+            });
         }
-
     })
-
-
-    res.json();
 };
