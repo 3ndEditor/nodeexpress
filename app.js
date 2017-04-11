@@ -1,6 +1,6 @@
 var express = require('express'),
-    connect = require('connect');
-    
+    connect = require('connect'),
+    bodyParser = require('body-parser');
 // 익스프레스 사용
 var app = express();
 
@@ -32,6 +32,10 @@ switch (app.get('env')) {
 
 // 환경변수의 포트가 있다면 쓰고, 없다면 디폴트값
 app.set('port', process.env.PORT || 3000);
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
     //이 요청을 처리할 도메인 생성
@@ -83,6 +87,8 @@ app.use(function (req, res, next) {
     if (cluster.isWorker) console.log('Worker %d received request', cluster.worker.id);
     next();
 });
+
+
 
 // 라우터 연결 
 require('./router/routes.js')(app);

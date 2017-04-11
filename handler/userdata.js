@@ -1,6 +1,6 @@
 
 var UserDataSchema = require('../models/userdata.js');
-exports.userInfo = (req, res) => {
+exports.getUserInfo = (req, res) => {
     res.type('application/json');
     res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
     // res.cookie('monster', 'nom nom');
@@ -35,13 +35,32 @@ exports.userInfo = (req, res) => {
             new UserDataSchema({
                 userId: req.params.userId
             })
-            .save()
-            .then(() => {
-                res.json(-1);
-            })
-            .catch((err)=>{
-                res.json(err)
-            });
+                .save()
+                .then(() => {
+                    res.json({ nothing: "There isn't userData, So create new userData with userId " });
+                })
+                .catch((err) => {
+                    res.json(err)
+                });
         }
     })
 };
+
+exports.postUserInfo = (req, res) => {
+    res.type('application/x-www-form-urlencoded');
+    res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
+
+    let query = { userId: req.userInfo.id };
+
+    UserDataSchema.findOneAndUpdate(query, {
+        userInfo: req.userInfo
+    },
+        {
+            upsert: true
+
+        }, (err, doc) => {
+            if (err) return res.send(500, { error: err });
+            return res.send("succesfully saved");
+        });
+};
+
